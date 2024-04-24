@@ -8,7 +8,7 @@ from eralchemy2 import render_er
 Base = declarative_base()
 
 
-class User(Base):
+class User(Base):        
     __tablename__ = 'user'
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
@@ -19,7 +19,7 @@ class User(Base):
     pasword = Column(String(100), nullable= False)
 
 
-class Characters(Base):
+class Characters(Base):  # Characters --agregation--> Favorites
     __tablename__ = 'characters'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
@@ -28,7 +28,7 @@ class Characters(Base):
     eye_color = Column(String(50), nullable=True)
 
 
-class Planets(Base):
+class Planets(Base):  # Planets --agregation--> Favorites
     __tablename__= 'planets'
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False)
@@ -36,7 +36,7 @@ class Planets(Base):
     population = Column(String, nullable=False)
     gravity = Column(String, nullable=False)
 
-class Vehicles(Base):
+class Vehicles(Base):  # vehicles --agregation--> Favorites
     __tablename__= 'vehicles'
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False)
@@ -44,7 +44,7 @@ class Vehicles(Base):
     vehicle_class = Column(String(100), nullable=False)
     consumables = Column(String(100), nullable=True)
 
-class Favorites(Base):
+class Favorites(Base):  # favorites --composition--> user
     __tablename__ = 'favorites'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
